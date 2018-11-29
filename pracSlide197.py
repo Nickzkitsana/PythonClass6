@@ -5,7 +5,7 @@ def stat_point_goalID():
     for i in range(len(premier_league_2017_2018)):
         sum = (premier_league_2017_2018[i]["W"] * 3) + (premier_league_2017_2018[i]["D"] * 1)
         gd = premier_league_2017_2018[i]["GF"] - premier_league_2017_2018[i]["GA"]
-        print("{0:5} {1:25} Pts:{2:3}  GD:{3:3}".format(i+1,premier_league_2017_2018[i]["Team"],sum,gd))
+        print("{0:5} {1:25} Pts:{2:3}  GD:{3:3}".format(i+1,premier_league_2017_2018[i]["Team"].lower(),sum,gd))
         if i == 3:
             DicL.line60()
         if i == 16:
@@ -14,16 +14,20 @@ def stat_point_goalID():
             DicL.line60()
 
 def stat_percentages():
-    DicL.line60()
+    DicL.line80()
+    print("                           Stat Percentages")
+    DicL.line80()
     for i in range(len(premier_league_2017_2018)):
-        sum = (premier_league_2017_2018[i]["W"] * 3) + (premier_league_2017_2018[i]["D"] * 1)
-        print("{0:5} {1:25} Pts:{2:3}  GD:{3:3}".format(i+1,premier_league_2017_2018[i]["Team"],sum,gd))
+        win = (premier_league_2017_2018[i]["W"]*0.4)
+        draw = (premier_league_2017_2018[i]["D"] * 0.4)
+        lose = (premier_league_2017_2018[i]["L"] * 0.4)
+        print("{0:5} {1:25} Win[{2:3.2f}%] Draw[{3:3.2f}%] Lose[{4:3.2f}%] ".format(i+1,premier_league_2017_2018[i]["Team"],win,draw,lose))
         if i == 3:
-            DicL.line60()
+            DicL.line80()
         if i == 16:
-            DicL.line60()
+            DicL.line80()
         if i == 20:
-            DicL.line60()
+            DicL.line80()
 
 
 premier_league_2017_2018 = [{"Pos":1,"Team":"Manchester City (C)","W":32,"D":4,"L":2,"GF":106,"GA":27},
@@ -48,3 +52,4 @@ premier_league_2017_2018 = [{"Pos":1,"Team":"Manchester City (C)","W":32,"D":4,"
                             {"Pos":20,"Team":"West BromwichAlbion (R)","W":6,"D":13,"L":19,"GF":31,"GA":56}]
 
 stat_point_goalID()
+stat_percentages()
